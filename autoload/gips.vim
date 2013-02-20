@@ -2,11 +2,11 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " import .txt as Array
-if !exists('g:gips_readig_txt')
+if !exists('g:gips_reading_txt')
     " 相対パスで設定したいけどエラーが出る
-    let g:gips_readig_txt = '$HOME/.vim/bundle/gips.vim/autoload/dict/tsundere.txt'
+    let g:gips_reading_txt = '$HOME/.vim/bundle/gips-vim/autoload/dict/tsundere.txt'
 endif
-let s:message = readfile(expand(g:gips_readig_txt))
+let s:message = readfile(expand(g:gips_reading_txt))
 
 set noshowmode
 " random numbers function
