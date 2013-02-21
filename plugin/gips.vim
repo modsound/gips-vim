@@ -7,6 +7,7 @@ let g:loaded_gips = 1
 " todo
 " 一定時間操作していない場合にsayする
 " shaberu.vimと連携する
+" $LANGがjaの場合とenの場合で読み込むtxtを変える
 " ----------------------------------
 
 " keymap

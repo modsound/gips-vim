@@ -3,10 +3,17 @@ set cpo&vim
 
 " import .txt as Array
 if !exists('g:gips_reading_txt')
-    " 相対パスで設定したいけどエラーが出る
+    " 相対パスで指定したいけどエラーが出る
     let g:gips_reading_txt = '$HOME/.vim/bundle/gips-vim/autoload/dict/tsundere.txt'
 endif
-let s:message = readfile(expand(g:gips_reading_txt))
+
+" if NOT readable, alert
+if filereadable(expand(g:gips_reading_txt))
+    let s:message = readfile(expand(g:gips_reading_txt))
+  else
+    echo "テキストファイルが読み込めないわ..."
+    finish
+endif
 
 set noshowmode
 " random numbers function
