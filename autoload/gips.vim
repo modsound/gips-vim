@@ -6,14 +6,7 @@ if !exists('g:gips_reading_txt')
     " 相対パスで指定したいけどエラーが出る
     let g:gips_reading_txt = '$HOME/.vim/bundle/gips-vim/autoload/dict/tsundere.txt'
 endif
-
-" if NOT readable, alert
-if filereadable(expand(g:gips_reading_txt))
-    let s:message = readfile(expand(g:gips_reading_txt))
-  else
-    echo "テキストファイルが読み込めないわ..."
-    finish
-endif
+let s:message = readfile(expand(g:gips_reading_txt))
 
 set noshowmode
 " random numbers function
