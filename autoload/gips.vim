@@ -3,10 +3,9 @@ set cpo&vim
 
 " import .txt as Array
 if !exists('g:gips_reading_txt')
-    " 相対パスで指定したいけどエラーが出る
-    let g:gips_reading_txt = '$HOME/.vim/bundle/gips-vim/autoload/dict/tsundere.txt'
+    let g:gips_reading_txt = expand('<sfile>:p:h') . '/dict/tsundere.txt'
 endif
-let s:message = readfile(expand(g:gips_reading_txt))
+let s:message = map(readfile(expand(g:gips_reading_txt)), 'iconv(v:val, "utf-8", &encoding)')
 
 set noshowmode
 " random numbers function
