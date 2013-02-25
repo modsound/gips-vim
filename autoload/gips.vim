@@ -1,7 +1,11 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-" import .txt as Array
+" [default setting]
+" text to speech via shaberu
+" let g:gips_speech_via_shaberu = 0
+
+" import text file as Array
 if !exists('g:gips_reading_txt')
     let g:gips_reading_txt = expand('<sfile>:p:h') . '/dict/tsundere.txt'
 endif
@@ -34,9 +38,18 @@ function! gips#Gips()
     " import Array
     let list = s:message
     let list_dist = gips#s:discrete_distribution(list)
-    let scenario = list_dist.apply(s:engine)
+    let s:says = list_dist.apply(s:engine)
     " output your text on statusline at random
-    echo scenario
+    echo s:says
+    " call gips#Gips_speech()
+    " if loaded shaberu.vim and exists user's permission, vim gives a speech!
+    " 初回のみechoが表示されない...
+    if g:loaded_shaberu == 1 && g:gips_speech_via_shaberu == 1
+        call shaberu#say(s:says)
+    endif
 endfunction
+
+" function! gips#Gips_speech()
+" endfunction
 
 let&cpo = s:save_cpo
