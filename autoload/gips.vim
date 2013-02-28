@@ -1,9 +1,11 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-" [default setting]
-" text to speech via shaberu
-" let g:gips_speech_via_shaberu = 0
+" [default setting = invalid]
+" * text to speech via shaberu
+"   let g:gips_speech_via_shaberu = 0
+" * after one minute you move cursor, Vim says something.
+"   let g:gips_interference_least_expected = 0
 
 " import text file as Array
 if !exists('g:gips_reading_txt')
@@ -41,15 +43,21 @@ function! gips#Gips()
     let s:says = list_dist.apply(s:engine)
     " output your text on statusline at random
     echo s:says
-    " call gips#Gips_speech()
-    " if loaded shaberu.vim and exists user's permission, vim gives a speech!
+    " if loaded shaberu.vim and user's permission exists, vim gives a speech!
     " 初回のみechoが表示されない...
     if g:loaded_shaberu == 1 && g:gips_speech_via_shaberu == 1
         call shaberu#say(s:says)
     endif
 endfunction
 
-" function! gips#Gips_speech()
-" endfunction
+" Interference
+set updatetime=60000
+function! gips#interference()
+    " interference
+    augroup limit
+      autocmd!
+      autocmd CursorHold,CursorHoldI * call gips#Gips()
+    augroup END
+endfunction
 
 let&cpo = s:save_cpo
