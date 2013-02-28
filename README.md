@@ -27,6 +27,12 @@ Vim can read out the text, If you install Shaberu.vim, and set the following par
 let g:gips_speech_via_shaberu = 1
 ```
 
+After one minute you don't move cursor, Vim says something. You need set the following parameter in your vimrc.
+
+```
+let g:gips_interference_least_expected = 1
+```
+
 ##THANKS!!
 I conceived the idea of this plugin at yokohama.vim. @thinca's advice made my script fit for practical use.  
 The random numbers code depends on @osyo-manga.
