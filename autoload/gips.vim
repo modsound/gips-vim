@@ -1,12 +1,6 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-" [default setting = invalid]
-" * text to speech via shaberu
-"   let g:gips_speech_via_shaberu = 0
-" * after one minute you move cursor, Vim says something.
-"   let g:gips_interference_least_expected = 0
-
 " import text file as Array
 if !exists('g:gips_reading_txt')
     let g:gips_reading_txt = expand('<sfile>:p:h') . '/dict/tsundere.txt'
@@ -44,8 +38,7 @@ function! gips#Gips()
     " output your text on statusline at random
     echo s:says
     " if loaded shaberu.vim and user's permission exists, vim gives a speech!
-    " 初回のみechoが表示されない...
-    if g:loaded_shaberu == 1 && g:gips_speech_via_shaberu == 1
+    if exists("g:loaded_shaberu") && exists("g:gips_speech_via_shaberu")
         call shaberu#say(s:says)
     endif
 endfunction
@@ -53,7 +46,6 @@ endfunction
 " Interference
 set updatetime=60000
 function! gips#interference()
-    " interference
     augroup limit
       autocmd!
       autocmd CursorHold,CursorHoldI * call gips#Gips()
