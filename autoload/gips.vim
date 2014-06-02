@@ -39,6 +39,7 @@ function! gips#Gips()
     echo s:says
     " if loaded shaberu.vim and user's permission exists, vim gives a speech!
     if exists("g:loaded_shaberu") && exists("g:gips_speech_via_shaberu")
+        call vimproc#system_bg("killall say")
         call shaberu#say(s:says)
     endif
 endfunction
