@@ -44,13 +44,4 @@ function! gips#Gips()
     endif
 endfunction
 
-" Interference
-set updatetime=60000
-function! gips#interference()
-    augroup limit
-      autocmd!
-      autocmd CursorHold,CursorHoldI * call gips#Gips()
-    augroup END
-endfunction
-
 let&cpo = s:save_cpo

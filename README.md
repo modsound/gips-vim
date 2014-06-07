@@ -1,36 +1,25 @@
 # Gips.vim
-__This plugin is only for Japanese at present.__
 
-We vimmer, when moving cursor, is not allowed to use arrow keys. We should use hjkl keys.
-This plugin restricts yourself to use arrow keys. If you use them, you are scolded by vim on status line.
+We are taught not to use arrow keys by Vim master to move back fingers to their home position quickly.  
+This plugin helps that as it assigns another function to arrow keys. If you press arrow keys, Vim displays random messages on statusline.
 
 ## Install
 ```
-Bundle 'modsound/gips-vim.git'
+NeoBundle 'modsound/gips-vim.git'
 ```
 
-## Config
-  Default what she says is TSUNDERE version. But other script file is saved in "gips-vim/autoload/dict" directory. You can change the contents by updating your .vimrc.  
+## Configuration
 
-For example...
+* You can change messages from Vim, If you save a text file in 'dict' directory(in plugin directory) and set its filepath by global variable in your vimirc.
+
 ```
-let g:gips_reading_txt = '$HOME/.vim/bundle/gips-vim/autoload/dict/tsundere.txt'
+let g:gips_reading_txt = '~/.vim/bundle/gips-vim/autoload/dict/***.txt'
 ```
 
-And you can make vim into speaking(but on statusline now) as you like, if you set a variable where your text file separated by newlines is.
-
-## Additional Settings(Ver0.01)
-
-Vim can read out the text, If you install Shaberu.vim, and set the following parameter in your vimrc.
+* Vim can read out the text, If you install Shaberu.vim and set the following parameter in your vimrc.
 
 ```
 let g:gips_speech_via_shaberu = 1
-```
-
-After one minute you don't move cursor, Vim says something. You need set the following parameter in your vimrc.
-
-```
-let g:gips_interference_least_expected = 1
 ```
 
 ##THANKS!!
