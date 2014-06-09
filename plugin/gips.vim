@@ -21,3 +21,7 @@ nnoremap <Up>    :call gips#Gips()<CR>
 nnoremap <Down>  :call gips#Gips()<CR>
 nnoremap <Left>  :call gips#Gips()<CR>
 nnoremap <Right> :call gips#Gips()<CR>
+inoremap <Up>    <Esc>:call gips#Gips()<CR>
+inoremap <Down>  <Esc>:call gips#Gips()<CR>
+inoremap <Left>  <Esc>:call gips#Gips()<CR>
+inoremap <Right> <Esc>:call gips#Gips()<CR>
