@@ -9,7 +9,7 @@ let s:message = map(readfile(expand(g:gips_reading_txt)), 'iconv(v:val, "utf-8",
 
 set noshowmode
 " random numbers function
-function! gips#s:srand(seed)
+function! gips#srand(seed)
     let self = {}
     let self.seed = a:seed
     function self.apply()
@@ -19,7 +19,7 @@ function! gips#s:srand(seed)
     return self
 endfunction
 
-function! gips#s:discrete_distribution(list)
+function! gips#discrete_distribution(list)
     let self = {}
     let self.list = a:list
     function! self.apply(engine)
@@ -29,11 +29,11 @@ function! gips#s:discrete_distribution(list)
     return self
 endfunction
 
-let s:engine = gips#s:srand(localtime())
+let s:engine = gips#srand(localtime())
 function! gips#Gips()
     " import Array
     let list = s:message
-    let list_dist = gips#s:discrete_distribution(list)
+    let list_dist = gips#discrete_distribution(list)
     let s:says = list_dist.apply(s:engine)
     " output your text on statusline at random
     echo s:says
